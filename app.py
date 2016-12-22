@@ -59,8 +59,5 @@ if __name__ == '__main__':
 
     print "Starting app on port %d" % port
 
-#    customers = anw.topN('Customers', 5)
-#    print customers[0].get('displayName')
+    app.run(debug=True, port=port, host='0.0.0.0')
 
-
-    app.run(debug = True, port = port, host = '127.0.0.1')
