@@ -99,6 +99,8 @@ def handleShowTopN(result):
 			speech += obj.get('displayName')
 		elif api == 'SKUs' :
 			speech += obj.get('name')
+		elif api == 'Products' :
+			speech += obj.get('name')
 		elif api == 'SalesOrders' :
 			speech += obj.get('docNumber')
 
