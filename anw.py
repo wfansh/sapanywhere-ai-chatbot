@@ -52,7 +52,7 @@ def createLead(customer, description, qualification, mobile):
 	print 'Create Lead for %s, %s, %s, %s' %(customer,description, qualification, mobile)
 
 	try :
-		data = json.dumps({'description' : description, 'qualification' : qualification, 'status' : 'OPEN', 'relatedName' : customer, 'relatedType' : 'CONTACT', 'mobile' : mobile})
+		data = json.dumps({'description' : description, 'qualification' : qualification, 'status' : 'OPEN', 'relatedName' : customer, 'relatedType' : 'CUSTOMER', 'mobile' : mobile})
 		req = urllib2.Request(api_endpoint + 'Leads?access_token=' + access_token, data, {'Content-Type' : 'application/json'})
 		resp = urllib2.urlopen(req)
 
