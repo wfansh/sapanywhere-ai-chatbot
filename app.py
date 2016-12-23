@@ -86,8 +86,8 @@ def handleCreateLead(result):
 def handleShowTopN(result):
 	print 'Resolved Query : %s' %result.get('resolvedQuery')
 	
-	api = result.get('parameters').get('masterdata')[0]
-	number = result.get('parameters').get('number')[0]
+	api = result.get('parameters').get('masterdata')
+	number = result.get('parameters').get('number')
 	
 	resp = anw.topN(api, int(number))
 	print resp
