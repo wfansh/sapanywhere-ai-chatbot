@@ -74,7 +74,7 @@ def handleCreateLead(result):
 		customer = context.get('parameters').get('CustomerName')
 		description =  context.get('parameters').get('any1')
 		qualification = context.get('parameters').get('Qualification').upper()
-		mobile = context.get('parameters').get('any2')
+		mobile = context.get('parameters').get('number')
 
 		resp = anw.createLead(customer, description, qualification, mobile)
 		print resp
