@@ -41,7 +41,7 @@ def makeWebhookResult(req):
 		return {
 			'speech' : speech,
 			'displayText' : speech,
-			# 'data' : {},
+			'data' : {},
 			'contextOut' : [],
 			'source' : 'sapanywhere-ai-showcase'
 		}
