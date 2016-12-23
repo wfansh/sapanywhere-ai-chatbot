@@ -79,7 +79,7 @@ def handleCreateLead(result):
 		print resp
 
 		return {
-			'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
+			'speech' : 'Create lead %s for %s, qualification is %s' %(resp, customer, qualification),
 			'contextOut' : []
 		}
 
