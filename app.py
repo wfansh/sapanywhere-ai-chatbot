@@ -78,8 +78,10 @@ def handleCreateLead(result):
 		resp = anw.createLead(customer, description, qualification, mobile)
 		print resp
 
-		return 'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
-
+		return {
+			'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
+			'contextOut' : []
+		}
 
 
 def handleShowTopN(result):
