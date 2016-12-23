@@ -46,7 +46,7 @@ def makeWebhookResult(req):
 			'source' : 'sapanywhere-ai-showcase'
 		}
 
-	elif action == 'action.show.topN':
+	elif action == 'action.report.topN':
 		speech = handleShowTopN(result)
 		return {
 			'speech' : speech,
