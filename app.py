@@ -42,7 +42,7 @@ def makeWebhookResult(req):
 			'speech' : speech,
 			'displayText' : speech,
 			# 'data' : {},
-			# 'contextOut' : [],
+			'contextOut' : [],
 			'source' : 'sapanywhere-ai-showcase'
 		}
 
@@ -52,7 +52,7 @@ def makeWebhookResult(req):
 			'speech' : speech,
 			'displayText' : speech,
 			# 'data' : {},
-			# 'contextOut' : [],
+			'contextOut' : [],
 			'source' : 'sapanywhere-ai-showcase'
 		}
 
@@ -78,10 +78,8 @@ def handleCreateLead(result):
 		resp = anw.createLead(customer, description, qualification, mobile)
 		print resp
 
-		return {
-			'speech' : 'Create lead %s for %s, qualification is %s' %(resp, customer, qualification),
-			'contextOut' : []
-		}
+		return  'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
+			
 
 
 def handleShowTopN(result):
