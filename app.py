@@ -36,28 +36,8 @@ def makeWebhookResult(req):
 
 	print 'Action : %s' %action
 
-	if action == 'action.show.topN' :
-		print 'Resolved Query : %s' %result.get('resolvedQuery')
-
-		api = result.get('parameters').get('api')[0]
-		number = result.get('parameters').get('number')[0]
-
-		resp = anw.topN(api, number)
-
-		print resp
-
-		speech = 'Top ' + str(number) + ' ' + api + ' are : '
-
-		for obj in resp :
-			if api == 'Customers' :
-				speech += obj.get('displayName')
-			elif api == 'SKUs' :
-				speech += obj.get('name')
-			elif api == 'SalesOrders' :
-				speech += obj.get('docNumber')
-
-			speech += ', '
-
+	if action == 'CreateLead':
+		speech = handleCreateLead(result)
 		return {
 			'speech' : speech,
 			'displayText' : speech,
@@ -66,9 +46,66 @@ def makeWebhookResult(req):
 			'source' : 'sapanywhere-ai-showcase'
 		}
 
+	elif action == 'action.show.topN':
+		speech = handleShowTopN(result)
+		return {
+			'speech' : speech,
+			'displayText' : speech,
+			# 'data' : {},
+			# 'contextOut' : [],
+			'source' : 'sapanywhere-ai-showcase'
+		}
 
-	else :
+	else:
 		return {}
+
+
+
+
+
+def handleCreateLead(result):
+	print 'Resolved Query : %s' %result.get('resolvedQuery')
+
+	for context in result.get('contexts'):
+		if context.get('name') != 'createleadforcustomer':
+			continue
+
+		customer = context.get('parameters').get('CustomerName')
+		description =  context.get('parameters').get('any1')
+		qualification = context.get('parameters').get('Qualification').upper()
+		mobile = context.get('parameters').get('any2')
+
+		resp = anw.createLead(customer, description, qualification, mobile)
+		print resp
+
+		return 'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
+
+
+
+def handleShowTopN(result):
+	print 'Resolved Query : %s' %result.get('resolvedQuery')
+	
+	api = result.get('parameters').get('api')[0]
+	number = result.get('parameters').get('number')[0]
+	
+	resp = anw.topN(api, number)
+	print resp
+
+	speech = 'Top ' + str(number) + ' ' + api + ' are : '
+
+	for obj in resp :
+		if api == 'Customers' :
+			speech += obj.get('displayName')
+		elif api == 'SKUs' :
+			speech += obj.get('name')
+		elif api == 'SalesOrders' :
+			speech += obj.get('docNumber')
+
+		speech += ', '
+
+	return speech
+
+
 
 
 if __name__ == '__main__':
