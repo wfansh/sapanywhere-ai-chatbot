@@ -102,7 +102,7 @@ def handleShowTopN(result):
 		elif api == 'Products' :
 			speech += obj.get('name')
 		elif api == 'Opportunities' :
-			speech += obj.get('description')
+			speech += obj.get('remarks')
 		elif api == 'SalesOrders' :
 			speech += obj.get('docNumber')
 
