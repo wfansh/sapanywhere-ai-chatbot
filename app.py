@@ -100,7 +100,7 @@ def handleCreateLead_hot(result):
 		
 
 		customer = context.get('parameters').get('CustomerName')
-		description =  context.get('resolvedQuery')
+		description =  result.get('resolvedQuery')
 		qualification = 'HOT'
 	
 
