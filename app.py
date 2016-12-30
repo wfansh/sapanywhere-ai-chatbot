@@ -118,7 +118,7 @@ def handleCreateLead_hot(result):
 	resp = anw.createLead_quick(customer, description, qualification)
 	print resp
 
-	return  'Create lead %s for %s, qualification is hot' %(resp, customer)
+	return  'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
 
 
 def handleCreateLead_warm(result):
@@ -135,7 +135,7 @@ def handleCreateLead_warm(result):
 	resp = anw.createLead_quick(customer, description, qualification)
 	print resp
 
-	return  'Create lead %s for %s, qualification is hot' %(resp, customer)
+	return  'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
 		
 
 def handleShowTopN(result):
