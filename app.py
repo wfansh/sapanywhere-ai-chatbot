@@ -46,6 +46,17 @@ def makeWebhookResult(req):
 			#'contextOut' : [],
 			'source' : 'sapanywhere-ai-showcase'
 		}
+	
+	if action == 'CreateLead_hot':
+		speech = handleCreateLead_hot(result)
+		return {
+			'speech' : speech,
+			'displayText' : speech,
+			#'resetContexts': true,
+			#'data' : {},
+			#'contextOut' : [],
+			'source' : 'sapanywhere-ai-showcase'
+		}
 
 	elif action == 'Report_TopN':
 		speech = handleShowTopN(result)
@@ -82,6 +93,22 @@ def handleCreateLead(result):
 		return  'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
 			
 
+def handleCreateLead_hot(result):
+	print 'Resolved Query : %s' %result.get('resolvedQuery')
+
+	for context in result.get('contexts'):
+		
+
+		customer = context.get('parameters').get('CustomerName')
+		description =  context.get('resolvedQuery')
+		qualification = 'HOT'
+	
+
+		resp = anw.createLead_hot(customer, description, qualification)
+		print resp
+
+		return  'Create lead %s for %s, qualification is %s' %(resp, customer, qualification)
+		
 
 def handleShowTopN(result):
 	print 'Resolved Query : %s' %result.get('resolvedQuery')
