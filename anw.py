@@ -65,7 +65,7 @@ def createLead(customer, description, qualification, mobile):
 def createLead_hot(customer, description, qualification):
 	global access_token
 
-	print 'Create Lead for %s, %s, %s, %s' %(customer,description, qualification)
+	print 'Create Lead for %s, %s, %s' %(customer,description, qualification)
 
 	try :
 		data = json.dumps({'description' : description, 'qualification' : qualification, 'status' : 'OPEN', 'relatedName' : customer, 'relatedType' : 'CUSTOMER'})
