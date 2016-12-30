@@ -61,6 +61,22 @@ def createLead(customer, description, qualification, mobile):
 	except URLError as e:
 		print e.reason
 		return None
+	
+def createLead_hot(customer, description, qualification):
+	global access_token
+
+	print 'Create Lead for %s, %s, %s, %s' %(customer,description, qualification)
+
+	try :
+		data = json.dumps({'description' : description, 'qualification' : qualification, 'status' : 'OPEN', 'relatedName' : customer, 'relatedType' : 'CUSTOMER'})
+		req = urllib2.Request(api_endpoint + 'Leads?access_token=' + access_token, data, {'Content-Type' : 'application/json'})
+		resp = urllib2.urlopen(req)
+
+		return resp.read()
+
+	except URLError as e:
+		print e.reason
+		return None
 
 if __name__ == '__main__':
 	init()
