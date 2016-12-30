@@ -96,18 +96,18 @@ def handleCreateLead(result):
 def handleCreateLead_hot(result):
 	print 'Resolved Query : %s' %result.get('resolvedQuery')
 
-	for context in result.get('contexts'):
+	
 		
 
-		customer = context.get('parameters').get('CustomerName')
-		description =  result.get('resolvedQuery')
-		qualification = 'HOT'
+	customer = context.get('parameters').get('CustomerName')
+	description =  result.get('resolvedQuery')
+	qualification = 'HOT'
 	
+	#print  'Create lead %s for %s, qualification is hot' %(resp, customer)
+	resp = anw.createLead_hot(customer, description, qualification)
+	print resp
 
-		resp = anw.createLead_hot(customer, description, qualification)
-		print resp
-
-		return  'Create lead %s for %s, qualification is hot' %(resp, customer)
+	return  'Create lead %s for %s, qualification is hot' %(resp, customer)
 		
 
 def handleShowTopN(result):
