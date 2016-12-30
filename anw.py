@@ -62,7 +62,7 @@ def createLead(customer, description, qualification, mobile):
 		print e.reason
 		return None
 	
-def createLead_hot(customer, description, qualification):
+def createLead_quick(customer, description, qualification):
 	global access_token
 
 	print 'Create Lead for %s, %s, %s' %(customer,description, qualification)
@@ -78,6 +78,9 @@ def createLead_hot(customer, description, qualification):
 		print e.reason
 		return None
 
+
+	
+	
 if __name__ == '__main__':
 	init()
 	# createLead('FAN', 'EXHIBITION', 'WARM', '12356')
